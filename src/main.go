@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/feed3r/21Updater/engine"
+	"github.com/feed3r/21Updater/src/engine"
 )
 
 func main() {

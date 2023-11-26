@@ -72,6 +72,15 @@ func writeJSONToFile(filename string, data map[string]interface{}) error {
 // HandleTelegramWebHook sends a message back to the chat with a punchline starting by the message provided by the user.
 func HandleGithubUpdate(w http.ResponseWriter, r *http.Request) {
 
+	//read the header
+	headers := r.Header
+
+	// Print all the headers
+	fmt.Println("HTTP Header:")
+	for key, values := range headers {
+		fmt.Printf("%s: %s\n", key, values)
+	}
+
 	decoder := json.NewDecoder(r.Body)
 
 	var json_data map[string]interface{}

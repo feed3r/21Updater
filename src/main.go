@@ -9,5 +9,5 @@ import (
 func main() {
 	http.DefaultServeMux.HandleFunc("/githubUpdate", engine.HandleGithubUpdate)
 
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":9090", nil)
 }

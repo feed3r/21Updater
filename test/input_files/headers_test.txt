@@ -1,0 +1,11 @@
+Header del messaggio HTTP:
+Content-Length: 7347
+Accept: */*
+Content-Type: application/json
+X-Github-Delivery: caa0788c-8ca4-11ee-96a0-f969ee385b69
+X-Github-Hook-Id: 445243377
+Connection: close
+User-Agent: GitHub-Hookshot/3f0c934
+X-Github-Event: push
+X-Github-Hook-Installation-Target-Id: 713630393
+X-Github-Hook-Installation-Target-Type: repository

@@ -53,6 +53,22 @@ func sendTextToTelegramChat(chatId int, text string) (string, error) {
 	return bodyString, nil
 }
 
+func writeJSONToFile(filename string, data map[string]interface{}) error {
+	// Codifica la mappa in formato JSON
+	jsonData, err := json.MarshalIndent(data, "", "  ")
+	if err != nil {
+		return err
+	}
+
+	// Scrivi i dati nel file
+	err = os.WriteFile(filename, jsonData, 0644)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // HandleTelegramWebHook sends a message back to the chat with a punchline starting by the message provided by the user.
 func HandleGithubUpdate(w http.ResponseWriter, r *http.Request) {
 
@@ -61,6 +77,12 @@ func HandleGithubUpdate(w http.ResponseWriter, r *http.Request) {
 	var json_data map[string]interface{}
 
 	err := decoder.Decode(&json_data)
+	if err != nil {
+		panic(err)
+	}
+
+	//should write the received JSON to file
+	err = writeJSONToFile("test_commit.json", json_data)
 	if err != nil {
 		panic(err)
 	}

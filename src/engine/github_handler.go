@@ -69,6 +69,25 @@ func writeJSONToFile(filename string, data map[string]interface{}) error {
 	return nil
 }
 
+func writeHeadersToFile(filename string, headers http.Header) error {
+	// Crea o apri il file in modalità di append
+	file, err := os.OpenFile(filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	// Scrivi gli header nel file
+	fmt.Fprintln(file, "Header del messaggio HTTP:")
+	for key, values := range headers {
+		for _, value := range values {
+			fmt.Fprintf(file, "%s: %s\n", key, value)
+		}
+	}
+
+	return nil
+}
+
 // HandleTelegramWebHook sends a message back to the chat with a punchline starting by the message provided by the user.
 func HandleGithubUpdate(w http.ResponseWriter, r *http.Request) {
 
@@ -81,11 +100,16 @@ func HandleGithubUpdate(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("%s: %s\n", key, values)
 	}
 
+	err := writeHeadersToFile("headers_test.txt", headers)
+	if err != nil {
+		panic(err)
+	}
+
 	decoder := json.NewDecoder(r.Body)
 
 	var json_data map[string]interface{}
 
-	err := decoder.Decode(&json_data)
+	err = decoder.Decode(&json_data)
 	if err != nil {
 		panic(err)
 	}

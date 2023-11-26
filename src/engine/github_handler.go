@@ -2,6 +2,7 @@ package engine
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -55,6 +56,16 @@ func sendTextToTelegramChat(chatId int, text string) (string, error) {
 // HandleTelegramWebHook sends a message back to the chat with a punchline starting by the message provided by the user.
 func HandleGithubUpdate(w http.ResponseWriter, r *http.Request) {
 
+	decoder := json.NewDecoder(r.Body)
+
+	var json_data map[string]interface{}
+
+	err := decoder.Decode(&json_data)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(json_data)
 	// Parse incoming request
 	//TODO
 	// var update, err = parseGitHubUpdate(r)

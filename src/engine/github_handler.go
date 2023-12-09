@@ -88,6 +88,57 @@ func writeHeadersToFile(filename string, headers http.Header) error {
 	return nil
 }
 
+func ExtractEventFromHeader(h *http.Header) string {
+	event := model.EventTranslation[h.Get(model.GH_HEADER_EVENT)]
+
+	if event == "" {
+		event = h.Get(model.GH_HEADER_EVENT)
+	}
+
+	return event
+}
+
+func ParseIssue(h *http.Header, b map[string]interface{}) *model.GHEventDescriptor {
+
+	eventDesc := model.GHEventDescriptor{}
+
+	//1 - Event
+	eventDesc.Event = ExtractEventFromHeader(h)
+
+	//2 - Action
+	if action, actionExists := b["action"].(string); actionExists {
+		eventDesc.Action = action
+	}
+
+	//3 - Title
+	if issue, issueExists := b["issue"].(map[string]interface{}); issueExists {
+		if title, titleExists := issue["title"].(string); titleExists {
+			eventDesc.Title = title
+		}
+
+		//4 - Author
+		if user, userExists := issue["user"].(map[string]interface{}); userExists {
+			if login, loginExists := user["login"].(string); loginExists {
+				eventDesc.Author = login
+			}
+		}
+
+		//5 - Message
+		if body, bodyExists := issue["body"].(string); bodyExists {
+			eventDesc.Message = body
+		}
+	}
+
+	//6 - Repository Name
+	if repo, repoExists := b["repository"].(map[string]interface{}); repoExists {
+		if name, nameExists := repo["name"].(string); nameExists {
+			eventDesc.RepoName = name
+		}
+	}
+
+	return &eventDesc
+}
+
 // HandleTelegramWebHook sends a message back to the chat with a punchline starting by the message provided by the user.
 func HandleGithubUpdate(w http.ResponseWriter, r *http.Request) {
 
@@ -100,46 +151,18 @@ func HandleGithubUpdate(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("%s: %s\n", key, values)
 	}
 
-	err := writeHeadersToFile("headers_test.txt", headers)
-	if err != nil {
-		panic(err)
-	}
-
 	decoder := json.NewDecoder(r.Body)
 
-	var json_data map[string]interface{}
+	var jsonData map[string]interface{}
 
-	err = decoder.Decode(&json_data)
+	err := decoder.Decode(&jsonData)
 	if err != nil {
 		panic(err)
 	}
 
-	//should write the received JSON to file
-	err = writeJSONToFile("test_commit.json", json_data)
-	if err != nil {
-		panic(err)
-	}
+	eventDesc := ParseIssue(&headers, jsonData)
 
-	fmt.Println(json_data)
-	// Parse incoming request
-	//TODO
-	// var update, err = parseGitHubUpdate(r)
-	// if err != nil {
-	// 	log.Printf("error parsing update, %s", err.Error())
-	// 	return
-	// }
+	fmt.Println("Going to send the following message to Telegram chat: ", eventDesc)
 
-	// Sanitize input
-	//TODO
-
-	// Build an update message to be sent to the chat
-	//TODO
-
-	// Send the message to the Telegram Chat back to Telegram
-	// var telegramResponseBody, errTelegram = sendTextToTelegramChat(model.Message.Chat.Id, lyric)
-	// if errTelegram != nil {
-	// 	log.Printf("got error %s from telegram, reponse body is %s", errTelegram.Error(), telegramResponseBody)
-	// } else {
-	// 	log.Printf("punchline %s successfuly distributed to chat id %d", lyric, update.Message.Chat.Id)
-	// }
+	w.Write([]byte(eventDesc.String()))
 }

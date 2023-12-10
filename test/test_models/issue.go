@@ -1,6 +1,6 @@
 package test_models
 
-const ISSUE_EXPECTED_TEXT = `Hey, in our repository 21Updater a new issue has been opened by feed3r as Test Issue.
+const ISSUE_EXPECTED_TEXT = `Hey, in our repository 21Updater a new ISSUE has been opened by feed3r as Test Issue.
 Text says "This is the issue text"`
 
 const ISSUE_HEADER = `Request URL: http://houseoffeeder.ddns.net:9090/githubUpdate

@@ -14,7 +14,8 @@ var EventTranslation map[string]string
 
 func init() {
 	EventTranslation = map[string]string{
-		"issues": "issue",
+		"issues":       "ISSUE",
+		"pull_request": "PULL REQUEST",
 	}
 }
 

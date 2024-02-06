@@ -2,7 +2,7 @@ package engine
 
 import (
 	"encoding/json"
-	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -21,9 +21,11 @@ func HandleGithubUpdate(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
+	log.Println("Received the following JSON: ", jsonData)
+
 	eventDesc := ParseIssue(&headers, jsonData)
 
-	fmt.Println("Going to send the following message to Telegram chat: ", eventDesc)
+	log.Println("Going to send the following message to Telegram chat: ", eventDesc)
 
 	w.Write([]byte(eventDesc.String()))
 }

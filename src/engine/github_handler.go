@@ -6,11 +6,12 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/feed3r/21Updater/src/engine/telegram"
 	"github.com/feed3r/21Updater/src/model"
 )
 
 // HandleTelegramWebHook sends a message back to the chat with a punchline starting by the message provided by the user.
-func HandleGithubUpdate(w http.ResponseWriter, r *http.Request) {
+func HandleGithubUpdate(w http.ResponseWriter, r *http.Request, config *model.Conf) {
 
 	//read the header
 	headers := r.Header
@@ -42,5 +43,16 @@ func HandleGithubUpdate(w http.ResponseWriter, r *http.Request) {
 
 	log.Println("Going to send the following message to Telegram chat: ", eventDesc)
 
-	w.Write([]byte(eventDesc.String()))
+	res, err := telegram.SendTextToTelegramChat(config.BotToken, config.ChatId, "Test message")
+
+	if err != nil {
+		w.Write([]byte("Got an error sending message to Telegram Chat: " + err.Error()))
+	} else {
+		responseByteArray, err := json.Marshal(res)
+		if err != nil {
+			w.Write([]byte("Got an error marshalling the response: " + err.Error()))
+		}
+
+		w.Write(responseByteArray)
+	}
 }

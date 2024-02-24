@@ -6,8 +6,10 @@ import (
 )
 
 const GH_HEADER_EVENT = "X-GitHub-Event"
-const TELEGRAM_MESSAGE = `Hey, in our repository {{.RepoName}} a new {{.Event}} has been {{.Action}} by {{.Author}} as {{.Title}}.
-Text says "{{.Message}}"`
+const TELEGRAM_MESSAGE = `Hey, in our repository {{.RepoName}} a new {{.Event}} has occured, with Action: [{{.Action}}] Author: [{{.Author}}] and Title: [{{.Title}}].
+Text says: "{{.Message}}"
+
+You can see the event here: "{{.EventURL}}"`
 
 // action translation map
 var EventTranslation map[string]string
@@ -26,6 +28,7 @@ type GHEventDescriptor struct {
 	Author   string
 	Title    string
 	Message  string
+	EventURL string
 }
 
 // String returns the string representation of the GHEventDescriptor

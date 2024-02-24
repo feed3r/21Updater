@@ -1,8 +1,13 @@
 package test_models
 
-const PR_EXPECTED_TEXT = `Hey, in our repository 21Updater a new PULL REQUEST has been opened by feed3r having title "Feeder bot stub".
-Text says "This is the text of the newly created Pull Request"
-You can see the changes here: "https://api.github.com/repos/feed3r/21Updater/pulls/3"`
+/*
+Hey, in our repository {{.RepoName}} a new {{.Event}} has occured, with Action[{{.Action}}] Author: [{{.Author}}] and Title: [{{.Title}}].
+Text says "{{.Message}}"
+*/
+const PR_EXPECTED_TEXT = `Hey, in our repository 21Updater a new PULL REQUEST has occured, with Action: [updated] Author: [feed3r] and Title: [Feeder bot stub].
+Text says: "This is the text of the newly created Pull Request"
+
+You can see the event here: "https://github.com/feed3r/21Updater/pull/3"`
 
 const PR_HEADER = `Request URL: http://houseoffeeder.ddns.net:9090/githubUpdate
 Request method: POST

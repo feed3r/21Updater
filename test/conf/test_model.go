@@ -7,6 +7,7 @@ host:
   address: localhost
   port: 8080
 bot_api_key: aaa_bbb_ccc
+chat_id: "12345"
 `
 
 var ExpectedBaseConf = model.Conf{
@@ -14,5 +15,6 @@ var ExpectedBaseConf = model.Conf{
 		Address: "localhost",
 		Port:    8080,
 	},
-	BotApiKey: "aaa_bbb_ccc",
+	BotToken: "aaa_bbb_ccc",
+	ChatId:   "12345",
 }

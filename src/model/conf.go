@@ -5,6 +5,7 @@ type Host struct {
 	Port    int    `yaml:"port"`
 }
 type Conf struct {
-	Host      Host   `yaml:"host"`
-	BotApiKey string `yaml:"bot_api_key"`
+	Host     Host   `yaml:"host"`
+	BotToken string `yaml:"bot_token"`
+	ChatId   string `yaml:"chat_id"`
 }

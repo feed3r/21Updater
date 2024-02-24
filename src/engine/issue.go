@@ -6,12 +6,7 @@ import (
 	"github.com/feed3r/21Updater/src/model"
 )
 
-func ParseIssue(h *http.Header, b map[string]interface{}) *model.GHEventDescriptor {
-
-	eventDesc := model.GHEventDescriptor{}
-
-	//1 - Event
-	eventDesc.Event = ExtractEventFromHeader(h)
+func ParseIssue(h *http.Header, b map[string]interface{}, eventDesc *model.GHEventDescriptor) {
 
 	//2 - Action
 	if action, actionExists := b["action"].(string); actionExists {
@@ -44,5 +39,4 @@ func ParseIssue(h *http.Header, b map[string]interface{}) *model.GHEventDescript
 		}
 	}
 
-	return &eventDesc
 }

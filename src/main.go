@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/feed3r/21Updater/src/engine"
 )
@@ -21,5 +22,6 @@ func main() {
 	})
 
 	fmt.Println("21Updater server started and listening at port 9090")
-	http.ListenAndServe(":9090", nil)
+	serverAddr := config.Host.Address + ":" + strconv.Itoa(config.Host.Port)
+	http.ListenAndServe(serverAddr, nil)
 }

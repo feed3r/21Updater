@@ -21,7 +21,8 @@ func main() {
 		engine.HandleGithubUpdate(w, r, config)
 	})
 
-	fmt.Println("21Updater server started and listening at port 9090")
 	serverAddr := config.Host.Address + ":" + strconv.Itoa(config.Host.Port)
+	fmt.Println("21Updater server started and listening at " + serverAddr)
+
 	http.ListenAndServe(serverAddr, nil)
 }

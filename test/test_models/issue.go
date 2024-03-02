@@ -5,9 +5,7 @@ Text says: "This is the issue text"
 
 You can see the event here: "https://github.com/feed3r/21Updater/issues/4"`
 
-const ISSUE_HEADER = `Request URL: http://houseoffeeder.ddns.net:9090/githubUpdate
-Request method: POST
-Accept: */*
+const ISSUE_HEADER = `Accept: */*
 Content-Type: application/json
 User-Agent: GitHub-Hookshot/1d1fb3d
 X-GitHub-Delivery: 7e916440-95de-11ee-91d3-5adae4ec8e3c

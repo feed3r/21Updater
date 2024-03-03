@@ -3,9 +3,10 @@ A simple program, written in GO, that receives events from a GitHub repository a
 
 Actually, this program creates a web server on a configured port to receive the events. Once the event is received, a proper message is created, and it's sent to a specific Telegram Chat through a specific Telegram Bot. 
 
-# Some preliminary data
+# Preliminary informations
+This program receives events from a GitHub repository, using WebHooks. These events can be configured in the **WebHooks** section of the **Settings** page of the repository. Actually this program manages only PULL REQUESTS and ISSUE events. 
 
-Some preliminary data are mandatory to get the system to work, first of all a new Telegram Bot should be created, this can be easily achieved through the BotFather Telegram chat (see https://core.telegram.org/bots/tutorial)
+For Telegram, some preliminary data are mandatory to get the system to work, first of all a new Telegram Bot should be created, this can be easily achieved through the BotFather Telegram chat (see https://core.telegram.org/bots/tutorial)
 
 Then, a ChatID should be provided. This represents the identifier of a specific Telegram Chat, to get the ChatID you can: 
 
@@ -52,9 +53,6 @@ here the "chat" struct can be found and the "id" attribute is the information yo
 
 
 # Program usage
-
-
-
 From the project main directory, the following command can be used to compile the program and produce an executable file called 21Updater:
 
 ```shell

@@ -26,7 +26,7 @@ func HandleGithubUpdate(w http.ResponseWriter, r *http.Request, config *model.Co
 	}
 
 	log.Println("Received the following JSON: ", jsonData)
-	var eventDesc *model.GHEventDescriptor
+	var eventDesc *model.GHEventDescriptor = new(model.GHEventDescriptor)
 
 	eventDesc.Event = ExtractEventFromHeader(&headers)
 
@@ -43,7 +43,7 @@ func HandleGithubUpdate(w http.ResponseWriter, r *http.Request, config *model.Co
 
 	log.Println("Going to send the following message to Telegram chat: ", eventDesc)
 
-	res, err := telegram.SendTextToTelegramChat(config.BotToken, config.ChatId, "Test message")
+	res, err := telegram.SendTextToTelegramChat(config.BotToken, config.ChatId, eventDesc.String())
 
 	if err != nil {
 		w.Write([]byte("Got an error sending message to Telegram Chat: " + err.Error()))

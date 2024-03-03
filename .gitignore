@@ -5,3 +5,5 @@ src/.DS_Store
 .DS_Store
 test/__debug_bin*
 src/__debug_bin*
+main
+21Updater

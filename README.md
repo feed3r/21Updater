@@ -36,7 +36,7 @@ this will return some informations, where you'll find also:
             "first_name": "AAA"
         },
         "chat": {
-            "id": <group_ID>,
+            "id": "<Group ID>,"
             "title": "<Group name>"
         },
         "date": 25497,

@@ -7,3 +7,4 @@ test/__debug_bin*
 src/__debug_bin*
 main
 21Updater
+.vscode

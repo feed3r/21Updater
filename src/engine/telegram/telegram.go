@@ -2,16 +2,16 @@ package telegram
 
 import (
 	"encoding/json"
-	"log"
 	"net/http"
 	"net/url"
 
 	"github.com/feed3r/21Updater/src/model"
+	"github.com/sirupsen/logrus"
 )
 
-func SendTextToTelegramChat(botToken string, chatId string, text string) (*model.TelegramResponse, error) {
+func SendTextToTelegramChat(botToken string, chatId string, text string, logger *logrus.Logger) (*model.TelegramResponse, error) {
 
-	log.Printf("Sending %s to chat_id: %s", text, chatId)
+	logger.Printf("Sending %s to chat_id: %s", text, chatId)
 	var telegramApi string = "https://api.telegram.org/bot" + botToken + "/sendMessage"
 	response, err := http.PostForm(
 		telegramApi,
@@ -21,7 +21,7 @@ func SendTextToTelegramChat(botToken string, chatId string, text string) (*model
 		})
 
 	if err != nil {
-		log.Printf("error when posting text to the chat: %s", err.Error())
+		logger.Error("error when posting text to the chat: " + err.Error())
 		return nil, err
 	}
 	defer response.Body.Close()
@@ -29,16 +29,16 @@ func SendTextToTelegramChat(botToken string, chatId string, text string) (*model
 	// parse the response
 	result := &model.TelegramResponse{}
 	if err := json.NewDecoder(response.Body).Decode(result); err != nil {
-		log.Printf("could not decode response from telegram: %s", err.Error())
+		logger.Error("could not decode response from telegram: " + err.Error())
 		return nil, err
 	}
 	return result, nil
 }
 
-func ParseTelegramRequest(r *http.Response) (*model.Update, error) {
+func ParseTelegramRequest(r *http.Response, logger *logrus.Logger) (*model.Update, error) {
 	var update model.Update
 	if err := json.NewDecoder(r.Body).Decode(&update); err != nil {
-		log.Printf("could not decode incoming update %s", err.Error())
+		logger.Error("could not decode incoming update " + err.Error())
 		return nil, err
 	}
 	return &update, nil

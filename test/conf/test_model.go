@@ -8,6 +8,7 @@ host:
   port: 8080
 bot_api_key: aaa_bbb_ccc
 chat_id: "12345"
+logfile: "21updater.log"
 `
 
 var ExpectedBaseConf = model.Conf{
@@ -17,4 +18,5 @@ var ExpectedBaseConf = model.Conf{
 	},
 	BotToken: "aaa_bbb_ccc",
 	ChatId:   "12345",
+	Logfile:  "21updater.log",
 }

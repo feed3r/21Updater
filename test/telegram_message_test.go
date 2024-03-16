@@ -1,7 +1,6 @@
 package test
 
 import (
-	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -9,6 +8,7 @@ import (
 
 	"github.com/feed3r/21Updater/src/engine/telegram"
 	"github.com/feed3r/21Updater/src/model"
+	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/require"
 	"gopkg.in/yaml.v3"
 )
@@ -16,10 +16,11 @@ import (
 func TestSendMessageToTelegram(t *testing.T) {
 
 	var config model.Conf
+	var logger *logrus.Logger
 
 	data, err := os.ReadFile("../conf/conf.yaml")
 	if err != nil {
-		log.Fatalf("error: %v", err)
+		logger.Fatalf("error: %v", err)
 	}
 
 	err = yaml.Unmarshal([]byte(data), &config)
@@ -27,7 +28,7 @@ func TestSendMessageToTelegram(t *testing.T) {
 		t.Fatalf("Error parsing YAML: %v", err)
 	}
 
-	res, err := telegram.SendTextToTelegramChat(config.BotToken, config.ChatId, "Test message")
+	res, err := telegram.SendTextToTelegramChat(config.BotToken, config.ChatId, "Test message", logger)
 	require.Nil(t, err)
 
 	require.Equal(t, true, res.Ok)

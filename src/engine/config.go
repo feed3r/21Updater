@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/feed3r/21Updater/src/model"
+	"github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v3"
 )
 
@@ -16,6 +17,26 @@ func getConfigFilePath() string {
 	confPath := flag.String("conf", DEFAULT_CONFIG_PATH, "path to the configuration file")
 	flag.Parse()
 	return *confPath
+}
+
+func GetLogger(conf *model.Conf) (*logrus.Logger, *os.File, error) {
+
+	log := logrus.New()
+
+	// If conf.Logfile is empty, the logger will write to the standard output
+	if conf.Logfile == "" {
+		return log, nil, nil
+	}
+
+	file, err := os.OpenFile(conf.Logfile, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	if err != nil {
+		return log, nil, err
+	}
+
+	// Imposta il file come output del logger
+	log.SetOutput(file)
+
+	return log, file, nil
 }
 
 func LoadConfig() (*model.Conf, error) {

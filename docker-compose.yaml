@@ -1,0 +1,9 @@
+version: '3'
+services:
+  your-service:
+    build: .
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./logs:/app/logs
+      - ./conf:/app/conf

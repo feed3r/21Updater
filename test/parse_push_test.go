@@ -34,8 +34,6 @@ func TestParsePush(t *testing.T) {
 	require.Equal(t, "pushed", strings.ToLower(eventDesc.Event))
 
 	engine.ParsePush(&headers, pushJson, eventDesc, logger)
-	res := eventDesc.String()
-	println(res)
 	require.Equal(t, test_models.PUSH_EXPECTED_TEXT, eventDesc.String())
 
 }

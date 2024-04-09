@@ -1,15 +1,17 @@
 package test_models
 
-const COMMIT_EXPECTED_TEXT = `"Hey, brand new code has been PUSHED in our 21Updater repository by [feed3r] 
+const PUSH_EXPECTED_TEXT = `"Hey, brand new code has been PUSHED in our 21Updater repository by [feed3r] 
 Following the commits info:
 
+Author: "feed3r"
 Message: "First Test"
 Link: ""
 
+Author
 Message: "Second Test"
 Link: "Second Test"`
 
-const COMMIT_HEADERS = `Content-Length: 7347
+const PUSH_HEADERS = `Content-Length: 7347
 Accept: */*
 Content-Type: application/json
 X-Github-Delivery: caa0788c-8ca4-11ee-96a0-f969ee385b69
@@ -20,7 +22,7 @@ X-Github-Event: push
 X-Github-Hook-Installation-Target-Id: 713630393
 X-Github-Hook-Installation-Target-Type: repository
 `
-const COMMIT_BODY = `{
+const PUSH_BODY = `{
 	"after": "e55baded02bd4a2d5b2c4604ea8fc5b1f42338ec",
 	"base_ref": null,
 	"before": "fac80a356e400903ac11133fb1cb4c1d6c689f15",

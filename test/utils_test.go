@@ -11,13 +11,13 @@ import (
 )
 
 func TestRebuildRequest(t *testing.T) {
-	headers, err := utils.ReadHeaders(test_models.COMMIT_HEADERS)
+	headers, err := utils.ReadHeaders(test_models.PUSH_HEADERS)
 	if err != nil {
 		fmt.Println("Error in reading test file for headers: ", err)
 		return
 	}
 
-	req, err := utils.RebuildRequest(headers, []byte(test_models.COMMIT_BODY))
+	req, err := utils.RebuildRequest(headers, []byte(test_models.PUSH_BODY))
 	if err != nil {
 		fmt.Println("Error in building the request: ", err)
 	}

@@ -1,5 +1,14 @@
 package test_models
 
+const COMMIT_EXPECTED_TEXT = `"Hey, brand new code has been PUSHED in our 21Updater repository by [feed3r] 
+Following the commits info:
+
+Message: "First Test"
+Link: ""
+
+Message: "Second Test"
+Link: "Second Test"`
+
 const COMMIT_HEADERS = `Content-Length: 7347
 Accept: */*
 Content-Type: application/json

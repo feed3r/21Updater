@@ -12,6 +12,21 @@ func ParsePush(h *http.Header, b map[string]interface{}, eventDesc *model.GHEven
 	//2 - Action
 	eventDesc.Action = "PUSHED"
 
+	//4 - Author
+	if pusher, pusherExists := b["pusher"].(map[string]interface{}); pusherExists {
+		if name, nameExists := pusher["name"].(string); nameExists {
+			eventDesc.Author = name
+		}
+	}
+
+	//7 - Repository Name
+	if repo, repoExists := b["repository"].(map[string]interface{}); repoExists {
+		if name, nameExists := repo["name"].(string); nameExists {
+			eventDesc.RepoName = name
+		}
+	}
+
+	//8 - Commits
 	if commitArray, commitArrayExists := b["commits"].([]interface{}); commitArrayExists {
 
 		//initialize the commits array
@@ -40,13 +55,6 @@ func ParsePush(h *http.Header, b map[string]interface{}, eventDesc *model.GHEven
 			if url, urlExists := commitMap["url"].(string); urlExists {
 				eventDesc.Commits[i].URL = url
 			}
-		}
-	}
-
-	//7 - Repository Name
-	if repo, repoExists := b["repository"].(map[string]interface{}); repoExists {
-		if name, nameExists := repo["name"].(string); nameExists {
-			eventDesc.RepoName = name
 		}
 	}
 

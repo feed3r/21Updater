@@ -4,9 +4,10 @@ import (
 	"net/http"
 
 	"github.com/feed3r/21Updater/src/model"
+	"github.com/sirupsen/logrus"
 )
 
-func decodeAction(action string) string {
+func decodePRAction(action string) string {
 	switch action {
 	case "synchronize":
 		return "updated"
@@ -14,11 +15,11 @@ func decodeAction(action string) string {
 	return action
 }
 
-func ParsePR(h *http.Header, b map[string]interface{}, eventDesc *model.GHEventDescriptor) {
+func ParsePR(h *http.Header, b map[string]interface{}, eventDesc *model.GHEventDescriptor, logger *logrus.Logger) {
 
 	//2 - Action
 	if action, actionExists := b["action"].(string); actionExists {
-		eventDesc.Action = decodeAction(action)
+		eventDesc.Action = decodePRAction(action)
 	}
 
 	//3 - Title

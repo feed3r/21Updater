@@ -4,9 +4,10 @@ import (
 	"net/http"
 
 	"github.com/feed3r/21Updater/src/model"
+	"github.com/sirupsen/logrus"
 )
 
-func ParseIssue(h *http.Header, b map[string]interface{}, eventDesc *model.GHEventDescriptor) {
+func ParseIssue(h *http.Header, b map[string]interface{}, eventDesc *model.GHEventDescriptor, logger *logrus.Logger) {
 
 	//2 - Action
 	if action, actionExists := b["action"].(string); actionExists {

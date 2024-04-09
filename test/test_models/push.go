@@ -11,212 +11,282 @@ Author
 Message: "Second Test"
 Link: "Second Test"`
 
-const PUSH_HEADERS = `Content-Length: 7347
+const PUSH_HEADERS = `Request URL: http://houseoffeeder.ddns.net:9090/githubUpdate
+Request method: POST
 Accept: */*
-Content-Type: application/json
-X-Github-Delivery: caa0788c-8ca4-11ee-96a0-f969ee385b69
-X-Github-Hook-Id: 445243377
-Connection: close
-User-Agent: GitHub-Hookshot/3f0c934
-X-Github-Event: push
-X-Github-Hook-Installation-Target-Id: 713630393
-X-Github-Hook-Installation-Target-Type: repository
+Content-Type: application/x-www-form-urlencoded
+User-Agent: GitHub-Hookshot/45184e4
+X-GitHub-Delivery: 62be509e-f6b3-11ee-9a89-59c8095544b9
+X-GitHub-Event: push
+X-GitHub-Hook-ID: 468207434
+X-GitHub-Hook-Installation-Target-ID: 713630393
+X-GitHub-Hook-Installation-Target-Type: repository
 `
 const PUSH_BODY = `{
-	"after": "e55baded02bd4a2d5b2c4604ea8fc5b1f42338ec",
-	"base_ref": null,
-	"before": "fac80a356e400903ac11133fb1cb4c1d6c689f15",
-	"commits": [
-	  {
-		"added": [
-		  ".vscode/launch.json"
-		],
-		"author": {
-		  "email": "feeder81@gmail.com",
-		  "name": "Alessio Pascucci",
-		  "username": "feed3r"
-		},
-		"committer": {
-		  "email": "feeder81@gmail.com",
-		  "name": "Alessio Pascucci",
-		  "username": "feed3r"
-		},
-		"distinct": true,
-		"id": "e55baded02bd4a2d5b2c4604ea8fc5b1f42338ec",
-		"message": "second test",
-		"modified": [
-		  "src/__debug_bin",
-		  "src/engine/github_handler.go"
-		],
-		"removed": [],
-		"timestamp": "2023-11-26T22:31:39+01:00",
-		"tree_id": "e3c97d4d7d69434b79b3f4984aef7724672f8780",
-		"url": "https://github.com/feed3r/21Updater/commit/e55baded02bd4a2d5b2c4604ea8fc5b1f42338ec"
-	  }
-	],
-	"compare": "https://github.com/feed3r/21Updater/compare/fac80a356e40...e55baded02bd",
-	"created": false,
-	"deleted": false,
-	"forced": false,
-	"head_commit": {
-	  "added": [
-		".vscode/launch.json"
-	  ],
-	  "author": {
-		"email": "feeder81@gmail.com",
-		"name": "Alessio Pascucci",
-		"username": "feed3r"
-	  },
-	  "committer": {
-		"email": "feeder81@gmail.com",
-		"name": "Alessio Pascucci",
-		"username": "feed3r"
-	  },
-	  "distinct": true,
-	  "id": "e55baded02bd4a2d5b2c4604ea8fc5b1f42338ec",
-	  "message": "second test",
-	  "modified": [
-		"src/__debug_bin",
-		"src/engine/github_handler.go"
-	  ],
-	  "removed": [],
-	  "timestamp": "2023-11-26T22:31:39+01:00",
-	  "tree_id": "e3c97d4d7d69434b79b3f4984aef7724672f8780",
-	  "url": "https://github.com/feed3r/21Updater/commit/e55baded02bd4a2d5b2c4604ea8fc5b1f42338ec"
-	},
-	"pusher": {
-	  "email": "feeder81@gmail.com",
-	  "name": "feed3r"
-	},
-	"ref": "refs/heads/feeder_bot_stub",
+	"ref": "refs/heads/#21-manage_commits",
+	"before": "2f22249a0670a5611e08a81435609307d32215b4",
+	"after": "e43bc1f298cf4c44ffd72abbf1b5ecb03307e07b",
 	"repository": {
-	  "allow_forking": true,
-	  "archive_url": "https://api.github.com/repos/feed3r/21Updater/{archive_format}{/ref}",
-	  "archived": false,
-	  "assignees_url": "https://api.github.com/repos/feed3r/21Updater/assignees{/user}",
-	  "blobs_url": "https://api.github.com/repos/feed3r/21Updater/git/blobs{/sha}",
-	  "branches_url": "https://api.github.com/repos/feed3r/21Updater/branches{/branch}",
-	  "clone_url": "https://github.com/feed3r/21Updater.git",
-	  "collaborators_url": "https://api.github.com/repos/feed3r/21Updater/collaborators{/collaborator}",
-	  "comments_url": "https://api.github.com/repos/feed3r/21Updater/comments{/number}",
-	  "commits_url": "https://api.github.com/repos/feed3r/21Updater/commits{/sha}",
-	  "compare_url": "https://api.github.com/repos/feed3r/21Updater/compare/{base}...{head}",
-	  "contents_url": "https://api.github.com/repos/feed3r/21Updater/contents/{+path}",
-	  "contributors_url": "https://api.github.com/repos/feed3r/21Updater/contributors",
-	  "created_at": 1698966968,
-	  "default_branch": "main",
-	  "deployments_url": "https://api.github.com/repos/feed3r/21Updater/deployments",
-	  "description": "Some experiments in creating a Telegram BOT to receive the updates from a GitHub (in particular, from THIS repository)",
-	  "disabled": false,
-	  "downloads_url": "https://api.github.com/repos/feed3r/21Updater/downloads",
-	  "events_url": "https://api.github.com/repos/feed3r/21Updater/events",
-	  "fork": false,
-	  "forks": 0,
-	  "forks_count": 0,
-	  "forks_url": "https://api.github.com/repos/feed3r/21Updater/forks",
-	  "full_name": "feed3r/21Updater",
-	  "git_commits_url": "https://api.github.com/repos/feed3r/21Updater/git/commits{/sha}",
-	  "git_refs_url": "https://api.github.com/repos/feed3r/21Updater/git/refs{/sha}",
-	  "git_tags_url": "https://api.github.com/repos/feed3r/21Updater/git/tags{/sha}",
-	  "git_url": "git://github.com/feed3r/21Updater.git",
-	  "has_discussions": false,
-	  "has_downloads": true,
-	  "has_issues": true,
-	  "has_pages": false,
-	  "has_projects": true,
-	  "has_wiki": false,
-	  "homepage": null,
-	  "hooks_url": "https://api.github.com/repos/feed3r/21Updater/hooks",
-	  "html_url": "https://github.com/feed3r/21Updater",
 	  "id": 713630393,
-	  "is_template": false,
-	  "issue_comment_url": "https://api.github.com/repos/feed3r/21Updater/issues/comments{/number}",
-	  "issue_events_url": "https://api.github.com/repos/feed3r/21Updater/issues/events{/number}",
-	  "issues_url": "https://api.github.com/repos/feed3r/21Updater/issues{/number}",
-	  "keys_url": "https://api.github.com/repos/feed3r/21Updater/keys{/key_id}",
-	  "labels_url": "https://api.github.com/repos/feed3r/21Updater/labels{/name}",
-	  "language": null,
-	  "languages_url": "https://api.github.com/repos/feed3r/21Updater/languages",
-	  "license": {
-		"key": "cc0-1.0",
-		"name": "Creative Commons Zero v1.0 Universal",
-		"node_id": "MDc6TGljZW5zZTY=",
-		"spdx_id": "CC0-1.0",
-		"url": "https://api.github.com/licenses/cc0-1.0"
-	  },
-	  "master_branch": "main",
-	  "merges_url": "https://api.github.com/repos/feed3r/21Updater/merges",
-	  "milestones_url": "https://api.github.com/repos/feed3r/21Updater/milestones{/number}",
-	  "mirror_url": null,
-	  "name": "21Updater",
 	  "node_id": "R_kgDOKokiuQ",
-	  "notifications_url": "https://api.github.com/repos/feed3r/21Updater/notifications{?since,all,participating}",
-	  "open_issues": 1,
-	  "open_issues_count": 1,
+	  "name": "21Updater",
+	  "full_name": "feed3r/21Updater",
+	  "private": false,
 	  "owner": {
-		"avatar_url": "https://avatars.githubusercontent.com/u/4531376?v=4",
+		"name": "feed3r",
 		"email": "feeder81@gmail.com",
-		"events_url": "https://api.github.com/users/feed3r/events{/privacy}",
+		"login": "feed3r",
+		"id": 4531376,
+		"node_id": "MDQ6VXNlcjQ1MzEzNzY=",
+		"avatar_url": "https://avatars.githubusercontent.com/u/4531376?v=4",
+		"gravatar_id": "",
+		"url": "https://api.github.com/users/feed3r",
+		"html_url": "https://github.com/feed3r",
 		"followers_url": "https://api.github.com/users/feed3r/followers",
 		"following_url": "https://api.github.com/users/feed3r/following{/other_user}",
 		"gists_url": "https://api.github.com/users/feed3r/gists{/gist_id}",
-		"gravatar_id": "",
-		"html_url": "https://github.com/feed3r",
-		"id": 4531376,
-		"login": "feed3r",
-		"name": "feed3r",
-		"node_id": "MDQ6VXNlcjQ1MzEzNzY=",
-		"organizations_url": "https://api.github.com/users/feed3r/orgs",
-		"received_events_url": "https://api.github.com/users/feed3r/received_events",
-		"repos_url": "https://api.github.com/users/feed3r/repos",
-		"site_admin": false,
 		"starred_url": "https://api.github.com/users/feed3r/starred{/owner}{/repo}",
 		"subscriptions_url": "https://api.github.com/users/feed3r/subscriptions",
+		"organizations_url": "https://api.github.com/users/feed3r/orgs",
+		"repos_url": "https://api.github.com/users/feed3r/repos",
+		"events_url": "https://api.github.com/users/feed3r/events{/privacy}",
+		"received_events_url": "https://api.github.com/users/feed3r/received_events",
 		"type": "User",
-		"url": "https://api.github.com/users/feed3r"
+		"site_admin": false
 	  },
-	  "private": false,
-	  "pulls_url": "https://api.github.com/repos/feed3r/21Updater/pulls{/number}",
-	  "pushed_at": 1701034304,
-	  "releases_url": "https://api.github.com/repos/feed3r/21Updater/releases{/id}",
-	  "size": 8,
-	  "ssh_url": "git@github.com:feed3r/21Updater.git",
-	  "stargazers": 0,
-	  "stargazers_count": 0,
-	  "stargazers_url": "https://api.github.com/repos/feed3r/21Updater/stargazers",
+	  "html_url": "https://github.com/feed3r/21Updater",
+	  "description": "Some experiments in creating a Telegram BOT to receive the updates from a GitHub (in particular, from THIS repository)",
+	  "fork": false,
+	  "url": "https://github.com/feed3r/21Updater",
+	  "forks_url": "https://api.github.com/repos/feed3r/21Updater/forks",
+	  "keys_url": "https://api.github.com/repos/feed3r/21Updater/keys{/key_id}",
+	  "collaborators_url": "https://api.github.com/repos/feed3r/21Updater/collaborators{/collaborator}",
+	  "teams_url": "https://api.github.com/repos/feed3r/21Updater/teams",
+	  "hooks_url": "https://api.github.com/repos/feed3r/21Updater/hooks",
+	  "issue_events_url": "https://api.github.com/repos/feed3r/21Updater/issues/events{/number}",
+	  "events_url": "https://api.github.com/repos/feed3r/21Updater/events",
+	  "assignees_url": "https://api.github.com/repos/feed3r/21Updater/assignees{/user}",
+	  "branches_url": "https://api.github.com/repos/feed3r/21Updater/branches{/branch}",
+	  "tags_url": "https://api.github.com/repos/feed3r/21Updater/tags",
+	  "blobs_url": "https://api.github.com/repos/feed3r/21Updater/git/blobs{/sha}",
+	  "git_tags_url": "https://api.github.com/repos/feed3r/21Updater/git/tags{/sha}",
+	  "git_refs_url": "https://api.github.com/repos/feed3r/21Updater/git/refs{/sha}",
+	  "trees_url": "https://api.github.com/repos/feed3r/21Updater/git/trees{/sha}",
 	  "statuses_url": "https://api.github.com/repos/feed3r/21Updater/statuses/{sha}",
+	  "languages_url": "https://api.github.com/repos/feed3r/21Updater/languages",
+	  "stargazers_url": "https://api.github.com/repos/feed3r/21Updater/stargazers",
+	  "contributors_url": "https://api.github.com/repos/feed3r/21Updater/contributors",
 	  "subscribers_url": "https://api.github.com/repos/feed3r/21Updater/subscribers",
 	  "subscription_url": "https://api.github.com/repos/feed3r/21Updater/subscription",
+	  "commits_url": "https://api.github.com/repos/feed3r/21Updater/commits{/sha}",
+	  "git_commits_url": "https://api.github.com/repos/feed3r/21Updater/git/commits{/sha}",
+	  "comments_url": "https://api.github.com/repos/feed3r/21Updater/comments{/number}",
+	  "issue_comment_url": "https://api.github.com/repos/feed3r/21Updater/issues/comments{/number}",
+	  "contents_url": "https://api.github.com/repos/feed3r/21Updater/contents/{+path}",
+	  "compare_url": "https://api.github.com/repos/feed3r/21Updater/compare/{base}...{head}",
+	  "merges_url": "https://api.github.com/repos/feed3r/21Updater/merges",
+	  "archive_url": "https://api.github.com/repos/feed3r/21Updater/{archive_format}{/ref}",
+	  "downloads_url": "https://api.github.com/repos/feed3r/21Updater/downloads",
+	  "issues_url": "https://api.github.com/repos/feed3r/21Updater/issues{/number}",
+	  "pulls_url": "https://api.github.com/repos/feed3r/21Updater/pulls{/number}",
+	  "milestones_url": "https://api.github.com/repos/feed3r/21Updater/milestones{/number}",
+	  "notifications_url": "https://api.github.com/repos/feed3r/21Updater/notifications{?since,all,participating}",
+	  "labels_url": "https://api.github.com/repos/feed3r/21Updater/labels{/name}",
+	  "releases_url": "https://api.github.com/repos/feed3r/21Updater/releases{/id}",
+	  "deployments_url": "https://api.github.com/repos/feed3r/21Updater/deployments",
+	  "created_at": 1698966968,
+	  "updated_at": "2024-03-03T10:09:05Z",
+	  "pushed_at": 1712696080,
+	  "git_url": "git://github.com/feed3r/21Updater.git",
+	  "ssh_url": "git@github.com:feed3r/21Updater.git",
+	  "clone_url": "https://github.com/feed3r/21Updater.git",
 	  "svn_url": "https://github.com/feed3r/21Updater",
-	  "tags_url": "https://api.github.com/repos/feed3r/21Updater/tags",
-	  "teams_url": "https://api.github.com/repos/feed3r/21Updater/teams",
-	  "topics": [],
-	  "trees_url": "https://api.github.com/repos/feed3r/21Updater/git/trees{/sha}",
-	  "updated_at": "2023-11-16T09:48:58Z",
-	  "url": "https://github.com/feed3r/21Updater",
-	  "visibility": "public",
-	  "watchers": 0,
+	  "homepage": null,
+	  "size": 7791,
+	  "stargazers_count": 0,
 	  "watchers_count": 0,
-	  "web_commit_signoff_required": false
+	  "language": "Go",
+	  "has_issues": true,
+	  "has_projects": true,
+	  "has_downloads": true,
+	  "has_wiki": false,
+	  "has_pages": false,
+	  "has_discussions": false,
+	  "forks_count": 0,
+	  "mirror_url": null,
+	  "archived": false,
+	  "disabled": false,
+	  "open_issues_count": 1,
+	  "license": {
+		"key": "cc0-1.0",
+		"name": "Creative Commons Zero v1.0 Universal",
+		"spdx_id": "CC0-1.0",
+		"url": "https://api.github.com/licenses/cc0-1.0",
+		"node_id": "MDc6TGljZW5zZTY="
+	  },
+	  "allow_forking": true,
+	  "is_template": false,
+	  "web_commit_signoff_required": false,
+	  "topics": [
+  
+	  ],
+	  "visibility": "public",
+	  "forks": 0,
+	  "open_issues": 1,
+	  "watchers": 0,
+	  "default_branch": "main",
+	  "stargazers": 0,
+	  "master_branch": "main"
+	},
+	"pusher": {
+	  "name": "feed3r",
+	  "email": "feeder81@gmail.com"
 	},
 	"sender": {
+	  "login": "feed3r",
+	  "id": 4531376,
+	  "node_id": "MDQ6VXNlcjQ1MzEzNzY=",
 	  "avatar_url": "https://avatars.githubusercontent.com/u/4531376?v=4",
-	  "events_url": "https://api.github.com/users/feed3r/events{/privacy}",
+	  "gravatar_id": "",
+	  "url": "https://api.github.com/users/feed3r",
+	  "html_url": "https://github.com/feed3r",
 	  "followers_url": "https://api.github.com/users/feed3r/followers",
 	  "following_url": "https://api.github.com/users/feed3r/following{/other_user}",
 	  "gists_url": "https://api.github.com/users/feed3r/gists{/gist_id}",
-	  "gravatar_id": "",
-	  "html_url": "https://github.com/feed3r",
-	  "id": 4531376,
-	  "login": "feed3r",
-	  "node_id": "MDQ6VXNlcjQ1MzEzNzY=",
-	  "organizations_url": "https://api.github.com/users/feed3r/orgs",
-	  "received_events_url": "https://api.github.com/users/feed3r/received_events",
-	  "repos_url": "https://api.github.com/users/feed3r/repos",
-	  "site_admin": false,
 	  "starred_url": "https://api.github.com/users/feed3r/starred{/owner}{/repo}",
 	  "subscriptions_url": "https://api.github.com/users/feed3r/subscriptions",
+	  "organizations_url": "https://api.github.com/users/feed3r/orgs",
+	  "repos_url": "https://api.github.com/users/feed3r/repos",
+	  "events_url": "https://api.github.com/users/feed3r/events{/privacy}",
+	  "received_events_url": "https://api.github.com/users/feed3r/received_events",
 	  "type": "User",
-	  "url": "https://api.github.com/users/feed3r"
+	  "site_admin": false
+	},
+	"created": false,
+	"deleted": false,
+	"forced": false,
+	"base_ref": null,
+	"compare": "https://github.com/feed3r/21Updater/compare/2f22249a0670...e43bc1f298cf",
+	"commits": [
+	  {
+		"id": "498ab88c2e035c975c9f30a63fbe9c1691e1959c",
+		"tree_id": "734b68cc56eebef63abffe65bd64f3df54cfc680",
+		"distinct": true,
+		"message": "Manage the expected string for push event\n\nIn push event a particular message format is expected",
+		"timestamp": "2024-04-09T19:59:46+02:00",
+		"url": "https://github.com/feed3r/21Updater/commit/498ab88c2e035c975c9f30a63fbe9c1691e1959c",
+		"author": {
+		  "name": "Alessio Pascucci",
+		  "email": "feeder81@gmail.com",
+		  "username": "feed3r"
+		},
+		"committer": {
+		  "name": "Alessio Pascucci",
+		  "email": "feeder81@gmail.com",
+		  "username": "feed3r"
+		},
+		"added": [
+		  "test/parse_commit_test.go"
+		],
+		"removed": [
+  
+		],
+		"modified": [
+		  "test/test_models/commit.go"
+		]
+	  },
+	  {
+		"id": "07d21b87ce9680c08f3bc5ad4d2a366272dc7934",
+		"tree_id": "5e30c0f8359b343a099c094c5038aa8c2428699d",
+		"distinct": true,
+		"message": "Pass logger to Parser functions\n\nPass a reference to logger in the Parser function, so that an event can be logged",
+		"timestamp": "2024-04-09T22:50:13+02:00",
+		"url": "https://github.com/feed3r/21Updater/commit/07d21b87ce9680c08f3bc5ad4d2a366272dc7934",
+		"author": {
+		  "name": "Alessio Pascucci",
+		  "email": "feeder81@gmail.com",
+		  "username": "feed3r"
+		},
+		"committer": {
+		  "name": "Alessio Pascucci",
+		  "email": "feeder81@gmail.com",
+		  "username": "feed3r"
+		},
+		"added": [
+  
+		],
+		"removed": [
+  
+		],
+		"modified": [
+		  "src/engine/github_handler.go",
+		  "src/engine/issue.go",
+		  "src/engine/pull_request.go",
+		  "test/parse_issue_test.go",
+		  "test/parse_pr_test.go"
+		]
+	  },
+	  {
+		"id": "e43bc1f298cf4c44ffd72abbf1b5ecb03307e07b",
+		"tree_id": "e4053e9fc12085be69b4c29e90aaff3a1fd51075",
+		"distinct": true,
+		"message": "Parse push events DRAFT\n\nParse a PUSH event, building the message structure and the TELEGRAM message.\n\nActually, this implementation should be completed, but I need to push this to obtain a valid push message for testing",
+		"timestamp": "2024-04-09T22:52:40+02:00",
+		"url": "https://github.com/feed3r/21Updater/commit/e43bc1f298cf4c44ffd72abbf1b5ecb03307e07b",
+		"author": {
+		  "name": "Alessio Pascucci",
+		  "email": "feeder81@gmail.com",
+		  "username": "feed3r"
+		},
+		"committer": {
+		  "name": "Alessio Pascucci",
+		  "email": "feeder81@gmail.com",
+		  "username": "feed3r"
+		},
+		"added": [
+		  "test/parse_push_test.go",
+		  "test/test_models/push.go"
+		],
+		"removed": [
+		  "test/parse_commit_test.go",
+		  "test/test_models/commit.go"
+		],
+		"modified": [
+		  "src/engine/push.go",
+		  "src/model/github.go",
+		  "test/utils_test.go"
+		]
+	  }
+	],
+	"head_commit": {
+	  "id": "e43bc1f298cf4c44ffd72abbf1b5ecb03307e07b",
+	  "tree_id": "e4053e9fc12085be69b4c29e90aaff3a1fd51075",
+	  "distinct": true,
+	  "message": "Parse push events DRAFT\n\nParse a PUSH event, building the message structure and the TELEGRAM message.\n\nActually, this implementation should be completed, but I need to push this to obtain a valid push message for testing",
+	  "timestamp": "2024-04-09T22:52:40+02:00",
+	  "url": "https://github.com/feed3r/21Updater/commit/e43bc1f298cf4c44ffd72abbf1b5ecb03307e07b",
+	  "author": {
+		"name": "Alessio Pascucci",
+		"email": "feeder81@gmail.com",
+		"username": "feed3r"
+	  },
+	  "committer": {
+		"name": "Alessio Pascucci",
+		"email": "feeder81@gmail.com",
+		"username": "feed3r"
+	  },
+	  "added": [
+		"test/parse_push_test.go",
+		"test/test_models/push.go"
+	  ],
+	  "removed": [
+		"test/parse_commit_test.go",
+		"test/test_models/commit.go"
+	  ],
+	  "modified": [
+		"src/engine/push.go",
+		"src/model/github.go",
+		"test/utils_test.go"
+	  ]
 	}
   }`

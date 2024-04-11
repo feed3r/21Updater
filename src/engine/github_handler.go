@@ -33,10 +33,13 @@ func HandleGithubUpdate(w http.ResponseWriter, r *http.Request, config *model.Co
 	switch strings.ToLower(eventDesc.Event) {
 	case "issue":
 		logger.Info("Received an issue event, going to parse it")
-		ParseIssue(&headers, jsonData, eventDesc)
+		ParseIssue(&headers, jsonData, eventDesc, logger)
 	case "pull_request":
 		logger.Info("Received a pull request event, going to parse it")
-		ParsePR(&headers, jsonData, eventDesc)
+		ParsePR(&headers, jsonData, eventDesc, logger)
+	case "push":
+		logger.Info("Received a push event, going to parse it")
+		ParsePush(&headers, jsonData, eventDesc, logger)
 	default:
 		logger.Warn("Received an event that is not supported: ", eventDesc.Event)
 	}

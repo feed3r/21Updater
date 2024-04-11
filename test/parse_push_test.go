@@ -15,25 +15,25 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestParsePullRequest(t *testing.T) {
+func TestParsePush(t *testing.T) {
 
 	logger := logrus.New()
 	logger.Out = os.Stderr
 
-	headers, err := utils.ReadHeaders(test_models.PR_HEADER)
+	headers, err := utils.ReadHeaders(test_models.PUSH_HEADERS)
 	if err != nil {
-		fmt.Println("Error in reading test string for headers: ", err)
+		fmt.Println("Error in reading test file for headers: ", err)
 		return
 	}
 
-	var prJson map[string]interface{}
-	json.Unmarshal([]byte(test_models.PR_BODY), &prJson)
+	var pushJson map[string]interface{}
+	json.Unmarshal([]byte(test_models.PUSH_BODY), &pushJson)
 
 	var eventDesc = new(model.GHEventDescriptor)
 	eventDesc.Event = engine.ExtractEventFromHeader(&headers)
-	require.Equal(t, "pull request", strings.ToLower(eventDesc.Event))
+	require.Equal(t, "pushed", strings.ToLower(eventDesc.Event))
 
-	engine.ParsePR(&headers, prJson, eventDesc, logger)
-	require.Equal(t, test_models.PR_EXPECTED_TEXT, eventDesc.String())
+	engine.ParsePush(&headers, pushJson, eventDesc, logger)
+	require.Equal(t, test_models.PUSH_EXPECTED_TEXT, eventDesc.String())
 
 }

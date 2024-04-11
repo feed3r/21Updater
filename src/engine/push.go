@@ -2,6 +2,7 @@ package engine
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/feed3r/21Updater/src/model"
 	"github.com/sirupsen/logrus"
@@ -24,6 +25,15 @@ func ParsePush(h *http.Header, b map[string]interface{}, eventDesc *model.GHEven
 		if name, nameExists := repo["name"].(string); nameExists {
 			eventDesc.RepoName = name
 		}
+	}
+
+	if branch, branchExists := b["ref"].(string); branchExists {
+		//8 - Branch
+		lastSlash := strings.LastIndex(branch, "/")
+		if lastSlash >= 0 && lastSlash+1 < len(branch) {
+			branch = branch[lastSlash+1:]
+		}
+		eventDesc.Branch = branch
 	}
 
 	//8 - Commits

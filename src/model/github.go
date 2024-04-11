@@ -12,7 +12,7 @@ Text says: "{{.Message}}"
 
 You can see the event here: "{{.EventURL}}"`
 
-const TELEGRAM_PUSH_MESSAGE = `Hey, brand new code has been {{.Event}} in our {{.RepoName}} repository by [{{.Author}}]
+const TELEGRAM_PUSH_MESSAGE = `Hey, brand new code has been {{.Event}} in our {{.RepoName}} repository and in branch [{{.Branch}}] by [{{.Author}}]
 Following the commits info:
 
 {{range .Commits}}
@@ -49,6 +49,7 @@ type GHEventCommit struct {
 
 type GHEventDescriptor struct {
 	RepoName string
+	Branch   string
 	Event    string
 	Action   string
 	Author   string

@@ -37,7 +37,7 @@ func HandleGithubUpdate(w http.ResponseWriter, r *http.Request, config *model.Co
 	case "pull_request":
 		logger.Info("Received a pull request event, going to parse it")
 		ParsePR(&headers, jsonData, eventDesc, logger)
-	case "push":
+	case "pushed":
 		logger.Info("Received a push event, going to parse it")
 		ParsePush(&headers, jsonData, eventDesc, logger)
 	default:

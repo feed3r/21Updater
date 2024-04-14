@@ -66,6 +66,10 @@ func ParsePush(h *http.Header, b map[string]interface{}, eventDesc *model.GHEven
 				eventDesc.Commits[i].URL = url
 			}
 		}
+		if !commitArrayExists || len(eventDesc.Commits) == 0 {
+			logger.Info("No commits found in the push event, discarding the event")
+			eventDesc.ToBeDiscarded = true
+		}
 	}
 
 }

@@ -44,6 +44,11 @@ func HandleGithubUpdate(w http.ResponseWriter, r *http.Request, config *model.Co
 		logger.Warn("Received an event that is not supported: ", eventDesc.Event)
 	}
 
+	if eventDesc.ToBeDiscarded {
+		logger.Info("Event to be discarded, not sending to Telegram")
+		return //do not send the message to Telegram
+	}
+
 	logger.Info("Going to send the following message to Telegram chat: ", eventDesc)
 
 	res, err := telegram.SendTextToTelegramChat(config.BotToken, config.ChatId, eventDesc.String(), logger)

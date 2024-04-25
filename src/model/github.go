@@ -48,15 +48,16 @@ type GHEventCommit struct {
 }
 
 type GHEventDescriptor struct {
-	RepoName string
-	Branch   string
-	Event    string
-	Action   string
-	Author   string
-	Title    string
-	Message  string
-	EventURL string
-	Commits  []GHEventCommit
+	RepoName      string
+	Branch        string
+	Event         string
+	Action        string
+	Author        string
+	Title         string
+	Message       string
+	EventURL      string
+	Commits       []GHEventCommit
+	ToBeDiscarded bool
 }
 
 // String returns the string representation of the GHEventDescriptor
@@ -77,6 +78,10 @@ func (e *GHEventDescriptor) String() string {
 		}
 	}
 	var message bytes.Buffer
+
+	if tmpl == nil {
+		panic("Template is nil")
+	}
 
 	err = tmpl.Execute(&message, e)
 	if err != nil {

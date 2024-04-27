@@ -30,10 +30,15 @@ func TestParseIssue(t *testing.T) {
 	json.Unmarshal([]byte(test_models.ISSUE_BODY), &issueJson)
 
 	var eventDesc = new(model.GHEventDescriptor)
+	eventTranslator, err := utils.ReadDefaultLang()
+	if err != nil {
+		logger.Fatal("Error in reading the default language file: ", err)
+	}
+
 	eventDesc.Event = engine.ExtractEventFromHeader(&headers)
 	require.Equal(t, "issue", strings.ToLower(eventDesc.Event))
 
 	engine.ParseIssue(&headers, issueJson, eventDesc, logger)
-	require.Equal(t, test_models.ISSUE_EXPECTED_TEXT, eventDesc.String())
+	require.Equal(t, test_models.ISSUE_EXPECTED_TEXT, eventDesc.String(eventTranslator))
 
 }

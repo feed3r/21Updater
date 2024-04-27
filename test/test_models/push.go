@@ -1,53 +1,44 @@
 package test_models
 
-const PUSH_EXPECTED_TEXT = `Hey, brand new code has been PUSHED in our 21Updater repository by [feed3r]
+const PUSH_EXPECTED_TEXT = `Hey, brand new code has been PUSHED in our 21Updater repository in branch [#21-manage_commits] by [feed3r]
 Following the commits info:
 
 
 
-Author: 
-"feed3r"
-  
-Message: 
-"Manage the expected string for push event
+Author: "feed3r"
+
+Message: "Manage the expected string for push event
 
 In push event a particular message format is expected"
 
+Link to the commit details: https://github.com/feed3r/21Updater/commit/498ab88c2e035c975c9f30a63fbe9c1691e1959c
 
-Link to the commit details: 
-https://github.com/feed3r/21Updater/commit/498ab88c2e035c975c9f30a63fbe9c1691e1959c
 ------------------------------------------
 
 
 
-Author: 
-"feed3r"
-  
-Message: 
-"Pass logger to Parser functions
+Author: "feed3r"
+
+Message: "Pass logger to Parser functions
 
 Pass a reference to logger in the Parser function, so that an event can be logged"
 
+Link to the commit details: https://github.com/feed3r/21Updater/commit/07d21b87ce9680c08f3bc5ad4d2a366272dc7934
 
-Link to the commit details: 
-https://github.com/feed3r/21Updater/commit/07d21b87ce9680c08f3bc5ad4d2a366272dc7934
 ------------------------------------------
 
 
 
-Author: 
-"feed3r"
-  
-Message: 
-"Parse push events DRAFT
+Author: "feed3r"
+
+Message: "Parse push events DRAFT
 
 Parse a PUSH event, building the message structure and the TELEGRAM message.
 
 Actually, this implementation should be completed, but I need to push this to obtain a valid push message for testing"
 
+Link to the commit details: https://github.com/feed3r/21Updater/commit/e43bc1f298cf4c44ffd72abbf1b5ecb03307e07b
 
-Link to the commit details: 
-https://github.com/feed3r/21Updater/commit/e43bc1f298cf4c44ffd72abbf1b5ecb03307e07b
 ------------------------------------------
 
 `

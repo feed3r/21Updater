@@ -7,7 +7,7 @@ import (
 )
 
 func ExtractEventFromHeader(h *http.Header) string {
-	event := model.EventTranslation[h.Get(model.GH_HEADER_EVENT)]
+	event := model.EventConversion[h.Get(model.GH_HEADER_EVENT)]
 
 	if event == "" {
 		event = h.Get(model.GH_HEADER_EVENT)

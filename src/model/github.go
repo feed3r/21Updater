@@ -30,11 +30,10 @@ Link to the commit details:
 
 {{end}}`
 
-// action translation map
-var EventTranslation map[string]string
+var EventConversion map[string]string
 
 func init() {
-	EventTranslation = map[string]string{
+	EventConversion = map[string]string{
 		"issues":       "ISSUE",
 		"pull_request": "PULL REQUEST",
 		"push":         "PUSHED",
@@ -59,19 +58,21 @@ type GHEventDescriptor struct {
 	Commits  []GHEventCommit
 }
 
+const DEFAULT_LANG = "en"
+
 // String returns the string representation of the GHEventDescriptor
-func (e *GHEventDescriptor) String() string {
+func (e *GHEventDescriptor) String(translator *GHEventTranslator) string {
 
 	var tmpl *template.Template
 	var err error
 
 	if e.Event == PUSH_EVENT {
-		tmpl, err = template.New("telegram_push_message").Parse(TELEGRAM_PUSH_MESSAGE)
+		tmpl, err = template.New("telegram_push_message").Parse(translator.PushMessage)
 		if err != nil {
 			panic(err)
 		}
 	} else {
-		tmpl, err = template.New("telegram_message").Parse(TELEGRAM_MESSAGE)
+		tmpl, err = template.New("telegram_message").Parse(translator.Message)
 		if err != nil {
 			panic(err)
 		}

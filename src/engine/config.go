@@ -11,6 +11,7 @@ import (
 )
 
 var DEFAULT_CONFIG_PATH = "./conf/conf.yaml"
+var DEFAULT_LANG_PATH = "./lang/"
 
 // Parse a parameter to provide the config file path
 func getConfigFilePath() string {
@@ -39,10 +40,9 @@ func GetLogger(conf *model.Conf) (*logrus.Logger, *os.File, error) {
 	return log, file, nil
 }
 
-func LoadConfig() (*model.Conf, error) {
+func readConf(configFilePath string) (*model.Conf, error) {
 	var config model.Conf
 
-	configFilePath := getConfigFilePath()
 	data, err := os.ReadFile(configFilePath)
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -57,4 +57,38 @@ func LoadConfig() (*model.Conf, error) {
 	}
 
 	return &config, nil
+}
+
+func readLangTranslator(config *model.Conf) error {
+	langFilePath := DEFAULT_LANG_PATH + config.Language + ".yaml"
+	data, err := os.ReadFile(langFilePath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			err = fmt.Errorf("Cannot find the requested language file " + langFilePath + ", please check that the file exists")
+		}
+		return err
+	}
+
+	err = yaml.Unmarshal([]byte(data), &config.Translator)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func LoadConfig() (*model.Conf, error) {
+
+	configFilePath := getConfigFilePath()
+	config, err := readConf(configFilePath)
+	if err != nil {
+		return nil, err
+	}
+
+	err = readLangTranslator(config)
+	if err != nil {
+		return nil, err
+	}
+
+	return config, nil
 }

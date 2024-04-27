@@ -1,0 +1,29 @@
+message: "Hey, in our repository {{.RepoName}} a new {{.Event}} has occured, 
+  with Action: [{{.Action}}] Author: [{{.Author}}] and Title: [{{.Title}}].
+  
+  Text says: \"{{.Message}}\"
+
+
+  You can see the event here: \"{{.EventURL}}\""
+
+push_message: "Hey, brand new code has been {{.Event}} in our {{.RepoName}} repository in branch [{{.Branch}}] by [{{.Author}}]
+  
+  Following the commits info:
+
+
+  {{range .Commits}}
+
+
+  Author: \"{{.Author}}\"
+
+
+  Message: \"{{.Message}}\"
+
+
+  Link to the commit details: {{.URL}}
+
+
+------------------------------------------
+
+
+{{end}}"

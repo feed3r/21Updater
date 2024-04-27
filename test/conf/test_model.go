@@ -6,9 +6,10 @@ const BASE_CONF_YAML = `
 host:
   address: localhost
   port: 8080
-bot_api_key: aaa_bbb_ccc
+bot_token: aaa_bbb_ccc
 chat_id: "12345"
 logfile: "21updater.log"
+lang: "eng"
 `
 
 var ExpectedBaseConf = model.Conf{
@@ -19,4 +20,5 @@ var ExpectedBaseConf = model.Conf{
 	BotToken: "aaa_bbb_ccc",
 	ChatId:   "12345",
 	Logfile:  "21updater.log",
+	Language: "eng",
 }

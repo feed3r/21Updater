@@ -30,10 +30,16 @@ func TestParsePullRequest(t *testing.T) {
 	json.Unmarshal([]byte(test_models.PR_BODY), &prJson)
 
 	var eventDesc = new(model.GHEventDescriptor)
+
+	eventTranslator, err := utils.ReadDefaultLang()
+	if err != nil {
+		logger.Fatal("Error in reading the default language file: ", err)
+	}
+
 	eventDesc.Event = engine.ExtractEventFromHeader(&headers)
 	require.Equal(t, "pull request", strings.ToLower(eventDesc.Event))
 
 	engine.ParsePR(&headers, prJson, eventDesc, logger)
-	require.Equal(t, test_models.PR_EXPECTED_TEXT, eventDesc.String())
+	require.Equal(t, test_models.PR_EXPECTED_TEXT, eventDesc.String(eventTranslator))
 
 }

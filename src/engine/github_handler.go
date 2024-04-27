@@ -34,7 +34,7 @@ func HandleGithubUpdate(w http.ResponseWriter, r *http.Request, config *model.Co
 	case "issue":
 		logger.Info("Received an issue event, going to parse it")
 		ParseIssue(&headers, jsonData, eventDesc, logger)
-	case "pull_request":
+	case "pull request":
 		logger.Info("Received a pull request event, going to parse it")
 		ParsePR(&headers, jsonData, eventDesc, logger)
 	case "pushed":
@@ -51,7 +51,7 @@ func HandleGithubUpdate(w http.ResponseWriter, r *http.Request, config *model.Co
 
 	logger.Info("Going to send the following message to Telegram chat: ", eventDesc)
 
-	res, err := telegram.SendTextToTelegramChat(config.BotToken, config.ChatId, eventDesc.String(), logger)
+	res, err := telegram.SendTextToTelegramChat(config.BotToken, config.ChatId, eventDesc.String(&config.Translator), logger)
 
 	if err != nil {
 		w.Write([]byte("Got an error sending message to Telegram Chat: " + err.Error()))

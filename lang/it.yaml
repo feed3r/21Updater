@@ -1,21 +1,21 @@
-message: "Ciao! Nel nostro repository {{.RepoName}} c'è stato un nuovo evento di tipo {{.Event}}, 
-  con Azione: [{{.Action}}] Autore: [{{.Author}}] e Titolo: [{{.Title}}].
+message: "Nel nostro repository {{.RepoName}} c'è stato un nuovo evento di tipo {{.Event}}, 
+  con azione [{{.Action}}] 
+  
+  
+  Autore: [{{.Author}}]
   
   Il testo è il seguente: \"{{.Message}}\"
 
 
-  Puoi vedere l'evento originale al link: \"{{.EventURL}}\""
+  Puoi vedere l'evento originale al link: {{.EventURL}}"
 
-push_message: "Ciao! E' apparso del nuovo codice {{.Event}} nel nostro repository {{.RepoName}} nel branch [{{.Branch}}] da parte di [{{.Author}}]
-  
-  Di seguito i dettagli dei commit:
+push_message: "E' apparso del nuovo codice {{.Event}} nel nostro repository {{.RepoName}} nel branch [{{.Branch}}] da parte di [{{.Author}}]
 
 
   {{range .Commits}}
 
 
-  Autore: \"{{.Author}}\"
-
+  Autore: [{{.Author}}]
 
   Messaggio: \"{{.Message}}\"
 
@@ -23,7 +23,7 @@ push_message: "Ciao! E' apparso del nuovo codice {{.Event}} nel nostro repositor
   Tutti i dettagli sul commit al seguente link: {{.URL}}
 
 
-------------------------------------------
+------------------------------
 
 
 {{end}}"
